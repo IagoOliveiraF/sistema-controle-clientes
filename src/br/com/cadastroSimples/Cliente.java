@@ -10,11 +10,13 @@ public class Cliente {
 
     // Constructor de PESSOA para obrigar o preenchimento das informações importantes
 
-    public Cliente(String nome, String cpf, String idade, String email){
+    public Cliente(String nome, String idade, String email,  String cpf){
         this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
         this.idade = idade;
+        this.email = email;
+        this.cpf = cpf;
+
+
     }
 
     // Getters e Setters para as propriedades

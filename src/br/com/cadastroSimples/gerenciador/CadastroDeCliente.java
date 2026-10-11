@@ -22,10 +22,12 @@ public class CadastroDeCliente {
     public Cliente CriandoPessoa(){
         //Depois fazer uma lógica para randomizar um ID e não faze lo repiti-lo.
        String nome = questionar.QuestionarNome();
-       String cpf = questionar.QuestionarCpf();
-       String email = questionar.QuestionarEmail();
        String idade = String.valueOf(questionar.QuestionarIdade());
-       Cliente pessoa = new Cliente(nome, cpf, email, idade);
+       String email = questionar.QuestionarEmail();
+       String cpf = questionar.QuestionarCpf();
+
+
+       Cliente pessoa = new Cliente(nome,idade,email,cpf);
        return pessoa;
 
 
