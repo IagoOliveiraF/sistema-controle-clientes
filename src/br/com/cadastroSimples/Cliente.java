@@ -19,10 +19,11 @@ public class Cliente {
 
     }
 
-    // Getters e Setters para as propriedades
+    // Setters para as propriedades
+
     public void setId(int id){
-        this.id = id;
-    }
+       this.id = id;
+    };
 
     public int getId(){
         return this.id;
@@ -36,16 +37,8 @@ public class Cliente {
         return this.cpf;
     }
 
-    public void setEmail(String email){
-        this.email = email;
-    }
-
     public String getEmail(){
         return this.email;
-    }
-
-    public void setIdade(String idade){
-        this.idade = idade;
     }
 
     public String getIdade(){
@@ -56,8 +49,8 @@ public class Cliente {
     public String toString() {
 
       return String.format(
-              "Seu nome é: %s, você tem: %s anos, seu e-mail é: %s e seu CPF é: %s",
-              getNome(), getIdade(), getEmail(),getcpf()
+              "ID do cliente: %d -- Seu nome é: %s, você tem: %s anos, seu e-mail é: %s e seu CPF é: %s",
+            getId(), getNome(), getIdade(), getEmail(),getcpf()
 
         );
 

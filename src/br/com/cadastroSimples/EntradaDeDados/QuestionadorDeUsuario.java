@@ -3,7 +3,6 @@ package br.com.cadastroSimples.EntradaDeDados;
 
 public class QuestionadorDeUsuario {
     LeitorDeDados leitor = new LeitorDeDados();
-    String resposta = "";
 
     ///// Questionamento para iniciar, atualizar (usar o metodo do ID), Listar e finalizar o cadastro.
       public String mostrarOMenu(){
@@ -28,19 +27,15 @@ public class QuestionadorDeUsuario {
         return leitor.pegarDadosTexto();
     }
 
-    public String QuestionarCancelamento(){
-        System.out.println("Gostaria de cancelar o Cadastro?");
-        return leitor.pegarDadosTexto();
-    }
-
     public String QuestionarAlteracao(){
         System.out.println("Gostaria de alterar o seu Cadastro?");
         return leitor.pegarDadosTexto();
     }
 
-    public String QuestionarVerCadastro(){
-        System.out.println("Gostaria de ver seu cadastro?");
-        return leitor.pegarDadosTexto();
+    public int QuestionarVerCadastro(){
+        System.out.println("Gostaria de ver seu cadastro?"+
+                "\npara isso é necessário ter o ID em mãos.");
+        return leitor.pegarInteiro();
     }
 
     public String QuestionarVerListaDeUsuario(){
@@ -71,10 +66,6 @@ public class QuestionadorDeUsuario {
         return leitor.pegarDadosTexto();
     }
 
-    public String QuestionarTel(){
-        System.out.println("Qual o seu e-mail pessoal:");
-        return leitor.pegarDadosTexto();
-    };
 
 };
 
