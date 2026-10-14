@@ -1,52 +1,34 @@
 # Sistema de Controle de Clientes
 
-Projeto desenvolvido em Java com o objetivo de praticar os fundamentos da programação orientada a objetos e construir, de forma incremental, um sistema de cadastro e gerenciamento de clientes.
+Projeto desenvolvido em Java com foco no aprendizado de Programação Orientada a Objetos (POO), organização de responsabilidades, coleções e controle de versão com Git e GitHub.
 
-A versão atual (`v0.2`) implementa o cadastro e a listagem de clientes, a geração automática de identificadores sequenciais e a busca de clientes por ID. Os registros são mantidos em memória durante a execução do programa.
+A aplicação funciona pelo terminal e permite cadastrar clientes, listar os cadastros, buscar um cliente pelo ID e atualizar seus dados. Nesta etapa, os dados são mantidos apenas em memória durante a execução do programa.
 
-## Objetivos do projeto
+## Funcionalidades
 
-- Praticar os fundamentos da linguagem Java.
-- Aplicar conceitos de programação orientada a objetos.
-- Separar as responsabilidades das classes.
-- Trabalhar com coleções para armazenar e gerenciar objetos.
-- Desenvolver funcionalidades de forma incremental, utilizando Git para versionamento do código.
-- Construir uma base para futuras funcionalidades de gerenciamento de clientes.
+- Cadastro de clientes.
+- Geração automática de IDs sequenciais.
+- Listagem dos clientes cadastrados.
+- Busca de cliente pelo ID.
+- Atualização de nome, idade, e-mail ou CPF a partir do ID.
+- Tratamento de ID não encontrado.
+- Tratamento de opção de campo inválida durante a atualização.
+- Menu interativo no terminal.
 
-## Funcionalidades — v0.2
+## Menu da aplicação
 
-- **Cadastro de clientes:** coleta nome, idade, CPF e e-mail para criar um novo registro.
-- **Identificação automática:** atribui um ID sequencial a cada cliente cadastrado.
-- **Listagem de clientes:** exibe os clientes cadastrados durante a execução do programa.
-- **Busca por ID:** permite localizar um cliente pelo seu identificador e informa quando nenhum registro correspondente é encontrado.
-- **Menu interativo:** permite selecionar as operações disponíveis pelo console.
-- **Execução contínua:** mantém o menu em funcionamento até que o usuário escolha a opção de saída.
-
-### Menu do sistema
-
-| Opção | Funcionalidade | Status |
+| Opção | Funcionalidade | Situação |
 |---|---|---|
-| 1 | Cadastrar cliente | Implementada |
-| 2 | Listar clientes | Implementada |
-| 3 | Buscar cliente por ID | Implementada |
-| 4 | Atualizar cliente | Planejada |
-| 5 | Remover cliente | Planejada |
-| 0 | Sair do sistema | Implementada |
+| `1` | Cadastrar cliente | Implementada |
+| `2` | Listar clientes | Implementada |
+| `3` | Buscar cliente por ID | Implementada |
+| `4` | Atualizar cliente por ID | Implementada na v0.3 |
+| `5` | Remover cliente | Planejada |
+| `0` | Sair | Implementada |
 
-## Tecnologias e conceitos utilizados
+## Estrutura do projeto
 
-- **Java:** linguagem utilizada no desenvolvimento.
-- **Programação orientada a objetos (POO):** organização do sistema em classes e objetos.
-- **Encapsulamento:** controle de acesso aos atributos e à coleção interna de clientes.
-- **Collections Framework:** utilização de `List` e `ArrayList` para armazenar os clientes.
-- **Identificadores sequenciais:** geração de IDs para distinguir os clientes cadastrados.
-- **Métodos de busca:** utilização de uma busca sequencial para localizar clientes pelo ID.
-- **Laços de repetição:** utilização de `while` para manter o menu ativo e `for-each` para percorrer a lista de clientes.
-- **Git e GitHub:** versionamento e publicação incremental do projeto.
-
-## Organização das classes
-
-Estrutura simplificada dos arquivos principais do projeto:
+A estrutura abaixo representa os principais arquivos da aplicação:
 
 ```text
 src/
@@ -57,65 +39,56 @@ src/
     │   ├── ControladorDoMenu.java
     │   └── QuestionadorDeUsuario.java
     └── gerenciador/
+        ├── AtualizacaoDeCadastro.java
         ├── CadastroDeCliente.java
         └── GerenciadorDeClientes.java
 ```
 
-### Responsabilidade de cada classe
+## Responsabilidade das classes
 
-#### `Principal`
+- **`Principal`**: inicia a aplicação e mantém o ciclo principal do menu.
+- **`Cliente`**: representa um cliente e mantém seus dados, disponibilizando getters e setters.
+- **`QuestionadorDeUsuario`**: apresenta perguntas e coleta as respostas digitadas pelo usuário.
+- **`ControladorDoMenu`**: interpreta a opção selecionada e coordena a funcionalidade correspondente.
+- **`CadastroDeCliente`**: coleta os dados necessários e cria um cliente.
+- **`GerenciadorDeClientes`**: mantém a lista de clientes, atribui IDs sequenciais e oferece operações de inclusão, listagem e busca.
+- **`AtualizacaoDeCadastro`**: recebe o cliente encontrado e o campo escolhido, solicita o novo valor e atualiza o atributo correspondente por meio dos setters de `Cliente`.
 
-Ponto de entrada da aplicação. Inicializa o controlador do menu e o objeto responsável pelas interações com o usuário, mantendo o programa em execução até que seja escolhida a opção de saída.
+## Como funciona a atualização
 
-#### `Cliente`
+1. O usuário escolhe a opção `4`.
+2. Informa o ID do cliente.
+3. O sistema procura o cliente no `GerenciadorDeClientes`.
+4. Se o cliente existir, o usuário escolhe o campo que deseja alterar: `Nome`, `Idade`, `Email` ou `CPF`.
+5. O sistema solicita o novo valor e atualiza o objeto encontrado.
+6. O cadastro atualizado é exibido no terminal.
 
-Representa um cliente do sistema e mantém seus dados, como ID, nome, idade, CPF e e-mail. Disponibiliza métodos de acesso aos atributos e uma representação textual por meio de `toString()`.
+Se o ID não existir, a aplicação informa que o usuário não foi encontrado. Se o campo informado não corresponder às opções previstas, a atualização não é realizada.
 
-#### `CadastroDeCliente`
+## Conceitos praticados
 
-Responsável por solicitar os dados necessários para criar um cliente e retornar o objeto criado.
-
-#### `GerenciadorDeClientes`
-
-Responsável por manter e gerenciar a coleção de clientes durante a execução do programa. Implementa a inclusão de clientes com IDs sequenciais, a recuperação da lista para consulta e a busca de clientes por identificador.
-
-#### `QuestionadorDeUsuario`
-
-Centraliza as perguntas e interações apresentadas ao usuário, incluindo as solicitações de dados pessoais e as informações necessárias para executar as operações do menu.
-
-#### `ControladorDoMenu`
-
-Interpreta a opção selecionada pelo usuário e direciona a execução para a funcionalidade correspondente, integrando as classes responsáveis pelo cadastro e pelo gerenciamento dos clientes.
-
-## Como o sistema funciona
-
-1. A classe `Principal` inicia o sistema e cria os objetos necessários.
-2. O usuário recebe as opções disponíveis no menu.
-3. O `ControladorDoMenu` interpreta a opção selecionada.
-4. No cadastro, a classe `CadastroDeCliente` coleta os dados e cria um objeto `Cliente`.
-5. O `GerenciadorDeClientes` atribui um ID sequencial ao cliente e o adiciona à coleção.
-6. Na listagem, o gerenciador disponibiliza uma cópia não modificável da lista para consulta, e os clientes são exibidos no console.
-7. Na busca, o usuário informa um ID e o gerenciador procura o cliente correspondente.
-8. O processo se repete até que o usuário escolha a opção de saída.
+- Java e sintaxe da linguagem.
+- Classes, objetos, atributos e métodos.
+- Encapsulamento com atributos privados e getters/setters.
+- Coleções com `List` e `ArrayList`.
+- Geração de identificadores sequenciais.
+- Busca linear por ID.
+- Referências a objetos.
+- Separação de responsabilidades entre classes.
+- Estruturas condicionais e laços de repetição.
+- Versionamento com Git e GitHub.
 
 ## Armazenamento dos dados
 
-Os clientes são armazenados em memória por meio de uma lista.
+Nesta versão, os clientes são mantidos em memória. Portanto, os dados cadastrados e o contador de IDs são reiniciados quando a aplicação é encerrada. A persistência em arquivo ou banco de dados poderá ser considerada em uma evolução futura.
 
-Isso significa que os registros ficam disponíveis enquanto a aplicação está em execução. Ao encerrar o programa, os dados são perdidos, pois ainda não existe persistência em arquivos ou banco de dados.
+## Histórico de versões
 
-Os IDs são gerados sequencialmente durante a execução atual do programa. Como não existe persistência, a sequência é reiniciada quando uma nova execução começa.
+- **v0.1** — Cadastro e listagem de clientes.
+- **v0.2** — Geração automática de IDs sequenciais e busca de cliente por ID.
+- **v0.3** — Atualização de nome, idade, e-mail ou CPF de um cliente localizado pelo ID.
+- **Próxima evolução planejada** — Remoção de cliente por ID.
 
-## Histórico de versões e próximas etapas
+## Objetivo do projeto
 
-- **v0.1 — Cadastro e listagem:** implementação do cadastro de clientes, armazenamento em memória e listagem pelo menu interativo.
-- **v0.2 — Identificação e busca:** implementação de IDs sequenciais e busca de clientes por ID, além de melhorias no encapsulamento e na organização do código.
-- **v0.3 — Atualização de clientes:** permitir a alteração dos dados de um cliente existente.
-- **v0.4 — Remoção de clientes:** permitir a exclusão de um cliente pelo seu identificador.
-- **Próximas versões:** evoluir o projeto com validações, testes automatizados e outras melhorias de acordo com o aprendizado.
-
-## Propósito educacional
-
-Este projeto tem como objetivo promover a evolução gradual dos meus conhecimentos em Java e desenvolvimento Back-End, consolidando os fundamentos da programação e avançando progressivamente para conceitos de maior complexidade.
-
-O desenvolvimento é realizado em pequenas etapas, com foco na prática, na organização do código, na compreensão das decisões de projeto e no uso do Git para acompanhar a evolução do sistema.
+Este projeto tem finalidade educacional. A proposta é evoluir a aplicação em pequenas versões, praticando conceitos de desenvolvimento de software, avaliando decisões de implementação e registrando a evolução com Git e GitHub.

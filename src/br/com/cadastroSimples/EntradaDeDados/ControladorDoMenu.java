@@ -1,4 +1,5 @@
 package br.com.cadastroSimples.EntradaDeDados;
+import br.com.cadastroSimples.gerenciador.AtualizacaoDeCadastro;
 import br.com.cadastroSimples.gerenciador.CadastroDeCliente;
 import br.com.cadastroSimples.gerenciador.GerenciadorDeClientes;
 import br.com.cadastroSimples.Cliente;
@@ -40,6 +41,20 @@ public class ControladorDoMenu {
                 }
             }
             else if(this.resposta.equals("4")){
+
+                int id = questionar.QuestionarVerCadastro();
+                Cliente pessoa = gerenciador.buscarPorId(id);
+                AtualizacaoDeCadastro atualizar = new AtualizacaoDeCadastro();
+
+                if(pessoa != null){
+                    System.out.println(pessoa);
+                    atualizar.retornoDaAlteracao(pessoa, questionar.QuestionarAlteracao());
+                    System.out.println(pessoa);
+
+                } else{
+                    System.out.println("Usuário não encontrado.");
+                }
+
 
             }
             else if(this.resposta.equals("5")){

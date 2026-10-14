@@ -14,7 +14,7 @@ public class QuestionadorDeUsuario {
                 1 - Cadastrar cliente
                 2 - Listar clientes
                 3 - Buscar cliente
-                4 - Atualizar cliente
+                4 - Atualizar cliente 
                 5 - Remover cliente
                 0 - Sair
                 """);
@@ -28,7 +28,7 @@ public class QuestionadorDeUsuario {
     }
 
     public String QuestionarAlteracao(){
-        System.out.println("Gostaria de alterar o seu Cadastro?");
+        System.out.println("para alterar seu cadastro, informe o que gostaria de mudar seguindo os valores: Nome, Idade, Email ou CPF.");
         return leitor.pegarDadosTexto();
     }
 
@@ -50,9 +50,9 @@ public class QuestionadorDeUsuario {
         return leitor.pegarDadosTexto();
     }
 
-    public int QuestionarIdade(){
+    public String QuestionarIdade(){
         System.out.println("Qual a sua idade:");
-        return leitor.pegarInteiro();
+        return leitor.pegarDadosTexto();
     }
 
 

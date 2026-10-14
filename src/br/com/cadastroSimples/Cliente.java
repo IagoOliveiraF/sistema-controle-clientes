@@ -20,13 +20,20 @@ public class Cliente {
     }
 
     // Setters para as propriedades
+    public void setNome(String nome){
+        this.nome = nome;
+    }
 
-    public void setId(int id){
-       this.id = id;
-    };
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
 
-    public int getId(){
-        return this.id;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome(){
@@ -43,6 +50,15 @@ public class Cliente {
 
     public String getIdade(){
         return  this.idade;
+    }
+
+    //Setter para o id.
+    public void setId(int id){
+        this.id = id;
+    };
+
+    public int getId(){
+        return this.id;
     }
 
     @Override
