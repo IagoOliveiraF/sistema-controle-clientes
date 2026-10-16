@@ -32,6 +32,16 @@ public Cliente buscarPorId(int id) {
     return null;
 }
 
+
+public boolean removerDaLista(int id){
+      Cliente pessoa = buscarPorId(id);
+      if (pessoa != null){
+          pessoas.remove(pessoa);
+          return true;
+      }
+      return false;
+};
+
     public List<Cliente> listarClientes(){
         return List.copyOf(this.pessoas);
     }

@@ -22,19 +22,11 @@ public class QuestionadorDeUsuario {
             return leitor.pegarDadosTexto();
        }
 
-    public String QuestionarCadastro(){
-        System.out.println("Gostaria de iniciar o Cadastro?");
-        return leitor.pegarDadosTexto();
-    }
 
-    public String QuestionarAlteracao(){
-        System.out.println("para alterar seu cadastro, informe o que gostaria de mudar seguindo os valores: Nome, Idade, Email ou CPF.");
-        return leitor.pegarDadosTexto();
-    }
+
 
     public int QuestionarVerCadastro(){
-        System.out.println("Gostaria de ver seu cadastro?"+
-                "\npara isso é necessário ter o ID em mãos.");
+        System.out.println("Para isso é necessário ter o ID em mãos.");
         return leitor.pegarInteiro();
     }
 
@@ -66,6 +58,18 @@ public class QuestionadorDeUsuario {
         return leitor.pegarDadosTexto();
     }
 
+
+    ///// Questionamentos para alteração.. /////
+    public String QuestionarAlteracao(){
+        System.out.println("para alterar seu cadastro, informe o que gostaria de mudar seguindo os valores: Nome, Idade, Email ou CPF.");
+        return leitor.pegarDadosTexto();
+    }
+
+    ///// Questionamentos para exclusão. /////
+    public String QuestionarExclusao(){
+        System.out.println("Este é o usuário para exclusão? S/N");
+        return leitor.pegarDadosTexto();
+    }
 
 };
 

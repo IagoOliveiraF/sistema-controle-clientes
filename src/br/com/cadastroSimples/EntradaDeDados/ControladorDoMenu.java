@@ -58,6 +58,28 @@ public class ControladorDoMenu {
 
             }
             else if(this.resposta.equals("5")){
+                int id = questionar.QuestionarVerCadastro();
+                String confirmacao = "";
+                Cliente pessoa = gerenciador.buscarPorId(id);
+                if (pessoa != null){
+                    System.out.println("Dados do usuario:");
+                    System.out.println(pessoa);
+                    confirmacao = questionar.QuestionarExclusao();
+
+                    if (confirmacao.equalsIgnoreCase("sim")){
+                      boolean removido = gerenciador.removerDaLista(id);
+                      if (removido){
+                          System.out.println("Exclusão realizada. Tente buscar na lista para confirmar a exclusão.");
+
+                      } else{
+                          System.out.println("Não foi possível excluir o usuário.");
+                      }
+                    } else{
+                        System.out.println("Cancelando a exclusão.");
+                    }
+                }else {
+                    System.out.println("Usuário não encontrado.");
+                }
 
             }
 
